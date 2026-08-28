@@ -1,37 +1,306 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RecoverAI</title>
-    <link rel="stylesheet" href="/static/style.css">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>RecoverAI Dashboard</title>
+
+    <link rel="stylesheet"
+          href="/static/style.css">
+
 </head>
+
 
 <body>
 
-    <div class="container">
-        <h1>RecoverAI</h1>
+<div class="container">
 
-        <p class="subtitle">
-            AI-Powered Failed Payment Recovery Agent
-        </p>
 
-        <div class="card">
-            <h2>Payment Recovery Assistant</h2>
+    <h1>RecoverAI</h1>
 
-            <p id="status">
-                Payment failed. Let's find the best recovery option.
+    <p class="subtitle">
+        AI-Powered Payment Recovery & Customer Retention
+    </p>
+
+
+    <!-- DASHBOARD STATS -->
+
+    <div class="stats">
+
+
+        <div class="stat-card">
+
+            <h3>Total Transactions</h3>
+
+            <p id="totalTransactions">
+                Loading...
             </p>
 
-            <button onclick="getRecoveryRecommendation()">
-                Get AI Recommendation
-            </button>
-
-            <div id="result"></div>
         </div>
+
+
+        <div class="stat-card">
+
+            <h3>Failed Payments</h3>
+
+            <p id="failedPayments">
+                Loading...
+            </p>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <h3>Recovered Payments</h3>
+
+            <p id="recoveredPayments">
+                Loading...
+            </p>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <h3>Recovery Rate</h3>
+
+            <p id="recoveryRate">
+                Loading...
+            </p>
+
+        </div>
+
+
     </div>
 
-    <script src="/static/script.js"></script>
+
+
+    <!-- RECOVERY INSIGHTS -->
+
+    <div class="card">
+
+        <h2>Recovery Insights</h2>
+
+        <p>
+            RecoverAI identifies payment recovery
+            opportunities from failed transactions.
+        </p>
+
+
+        <div class="insight-grid">
+
+
+            <div class="stat-card">
+
+                <h3>Recovery Opportunity</h3>
+
+                <p id="recoveryOpportunity">
+                    Loading...
+                </p>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <h3>Revenue at Risk</h3>
+
+                <p id="revenueAtRisk">
+                    Loading...
+                </p>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <h3>Recovered Revenue</h3>
+
+                <p id="recoveredRevenue">
+                    Loading...
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+
+    <!-- AI ASSISTANT -->
+
+    <div class="card">
+
+        <h2>
+            AI Payment Recovery Assistant
+        </h2>
+
+        <p>
+            Provide payment context and let RecoverAI
+            recommend the next best recovery action.
+        </p>
+
+
+        <label for="paymentAmount">
+            Payment Amount
+        </label>
+
+        <input
+            type="number"
+            id="paymentAmount"
+            value="1499"
+            placeholder="Enter payment amount"
+        >
+
+
+        <label for="paymentMethod">
+            Payment Method
+        </label>
+
+        <select id="paymentMethod">
+
+            <option value="UPI">
+                UPI
+            </option>
+
+            <option value="Card">
+                Card
+            </option>
+
+            <option value="Net Banking">
+                Net Banking
+            </option>
+
+        </select>
+
+
+        <label for="failureReason">
+            Failure Reason
+        </label>
+
+        <select id="failureReason">
+
+            <option value="upi_failed">
+                UPI Payment Failed
+            </option>
+
+            <option value="card_failed">
+                Card Payment Failed
+            </option>
+
+            <option value="bank_declined">
+                Bank Declined Transaction
+            </option>
+
+            <option value="timeout">
+                Payment Timeout
+            </option>
+
+        </select>
+
+
+        <label for="customerType">
+            Customer Type
+        </label>
+
+        <select id="customerType">
+
+            <option value="new">
+                New Customer
+            </option>
+
+            <option value="returning">
+                Returning Customer
+            </option>
+
+            <option value="high_value">
+                High Value Customer
+            </option>
+
+        </select>
+
+
+        <button onclick="analyzePayment()">
+            Generate Recovery Action
+        </button>
+
+
+        <div id="result"></div>
+
+    </div>
+
+
+
+    <!-- PAYMENT TABLE -->
+
+    <div class="card">
+
+        <h2>
+            Recent Payment Activity
+        </h2>
+
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>
+                        Transaction
+                    </th>
+
+                    <th>
+                        Amount
+                    </th>
+
+                    <th>
+                        Status
+                    </th>
+
+                    <th>
+                        Failure Reason
+                    </th>
+
+                    <th>
+                        Recovery Action
+                    </th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody id="paymentsTable">
+
+                <tr>
+
+                    <td colspan="5">
+                        Loading payment data...
+                    </td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+
+</div>
+
+
+<script src="/static/script.js"></script>
 
 </body>
+
 </html>
